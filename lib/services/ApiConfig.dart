@@ -4,10 +4,14 @@ import 'package:http/http.dart' as http;
 
 class ApiConfig {
   static String? baseUrl;
-    static String? systemLogoPath;
+  static String? systemLogoPath;
   // Initialize it once during app startup
   static Future<void> loadBaseUrl() async {
-    final response = await http.get(Uri.parse('http://192.168.10.13/public_html/FlutterGrad/getSystemConfig.php'));
+    final response = await http.get(
+      Uri.parse(
+        'http://192.168.1.48/public_html/FlutterGrad/getSystemConfig.php',
+      ),
+    );
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -25,7 +29,9 @@ class ApiConfig {
 
   static String get getbaseUrl {
     if (baseUrl == null) {
-      throw Exception("Base URL not initialized. Call ApiConfig.loadBaseUrl() first.");
+      throw Exception(
+        "Base URL not initialized. Call ApiConfig.loadBaseUrl() first.",
+      );
     }
     return baseUrl!;
   }

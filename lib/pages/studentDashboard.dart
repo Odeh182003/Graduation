@@ -6,7 +6,6 @@ import 'package:bzu_leads/pages/academicRoom.dart';
 import 'package:bzu_leads/pages/chattingGroup_page.dart';
 import 'package:bzu_leads/pages/chatting_page.dart';
 //import 'package:bzu_leads/pages/createEventOfficials.dart';
-import 'package:bzu_leads/pages/PostFormScreen.dart';
 import 'package:bzu_leads/pages/participate.dart';
 import 'package:bzu_leads/pages/private_posts.dart';
 import 'package:bzu_leads/pages/profile_page.dart';
@@ -149,7 +148,7 @@ class _PublicPosts extends State<PublicPosts> {
     if (_currentUserID != null) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => PostFormScreen()),//
+        MaterialPageRoute(builder: (context) => Studentcreateposts()),//
       );
     }
   } else if (index == 4) {
@@ -187,7 +186,7 @@ class _PublicPosts extends State<PublicPosts> {
     final bool isWideScreen = MediaQuery.of(context).size.width > 900;
 
     return Scaffold(
-      backgroundColor: Colors.grey[100], // Remove _isDarkMode usage
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.green,

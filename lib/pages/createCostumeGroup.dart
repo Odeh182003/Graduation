@@ -170,7 +170,7 @@ class _CreateCustomGroupScreenState extends State<CreateCustomGroupScreen> {
       ),
             const SizedBox(width: 8),
             const Text(
-              "Create Custom Group",
+              "Create Costume Group",
               style: TextStyle(color: Colors.green),
             ),
           ],

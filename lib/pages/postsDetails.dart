@@ -340,12 +340,17 @@ Future<void> submitComment() async {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    Text("Approved By: ${post!["APPROVERNAME"] ?? ''}, ${post!["REVIEWEDBY"] ?? ''}"),
-                    const SizedBox(height: 8),
-                    Text("Email: ${post!["email"] ?? ''}"),
+                    // Conditionally show "Approved By"
+                    if (post!["APPROVERNAME"] != null && post!["APPROVERNAME"].toString().isNotEmpty)
+                      Text("Approved By: ${post!["APPROVERNAME"]}${post!["REVIEWEDBY"] != null && post!["REVIEWEDBY"].toString().isNotEmpty ? ', ${post!["REVIEWEDBY"]}' : ''}"),
+                    // Conditionally show "Email"
+                    if (post!["email"] != null && post!["email"].toString().isNotEmpty)
+                      Text("Email: ${post!["email"]}"),
                     const SizedBox(height: 8),
                     Text("Published: ${post!["DATECREATED"]}"),
-                    Text("Approved: ${post!["APPROVALDATE"] ?? ''}"),
+                    // Conditionally show "Approved"
+                    if (post!["APPROVALDATE"] != null && post!["APPROVALDATE"].toString().isNotEmpty)
+                      Text("Approved: ${post!["APPROVALDATE"]}"),
                     const SizedBox(height: 20),
                     Center(
                       child: ElevatedButton.icon(

@@ -115,9 +115,33 @@ class _SuspendStudentPageState extends State<SuspendStudentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text("Suspend Student"),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.green,
+        // elevation: 1,
+        title: Row(
+          children: [
+            Flexible(
+              child: Row(
+                children: [
+                  Image.network(
+                    ApiConfig.systemLogoUrl,
+                    height: 40,
+                    errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image),
+                  ),
+                  const SizedBox(width: 8),
+                  const Text(
+                    "Suspend Student",
+                    style: TextStyle(
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

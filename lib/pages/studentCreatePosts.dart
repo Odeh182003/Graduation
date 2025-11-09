@@ -75,12 +75,14 @@ class _Studentcreateposts extends State<Studentcreateposts> {
     }
   }
 
-  Future<void> _pickImage() async {
-    final picker = ImagePicker();
-    final pickedFiles = await picker.pickMultiImage(); // Allow multiple image selection
-    setState(() {
-      _selectedImages = pickedFiles.map((file) => File(file.path)).toList();
-    });
+  Future<void> _pickImages() async {
+    final ImagePicker picker = ImagePicker();
+    final List<XFile>? pickedFiles = await picker.pickMultiImage();
+    if (pickedFiles != null) {
+      setState(() {
+        _selectedImages = pickedFiles.map((file) => File(file.path)).toList();
+      });
+    }
   }
 
   Future<void> _pickFiles() async {
@@ -240,7 +242,7 @@ class _Studentcreateposts extends State<Studentcreateposts> {
                   children: [
                     Text("Images", style: TextStyle(fontWeight: FontWeight.w600)),
                     ElevatedButton.icon(
-                      onPressed: _pickImage,
+                      onPressed: _pickImages,
                       icon: Icon(Icons.image, color: Colors.white),
                       label: Text("Pick Images", style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
@@ -289,6 +291,11 @@ class _Studentcreateposts extends State<Studentcreateposts> {
                         );
                       },
                     ),
+                  )
+                else
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text("No images selected", style: TextStyle(color: Colors.grey)),
                   ),
                 // --- Attachments section ---
                 SizedBox(height: 16),
@@ -297,7 +304,7 @@ class _Studentcreateposts extends State<Studentcreateposts> {
                   children: [
                     Text("Attachments", style: TextStyle(fontWeight: FontWeight.w600)),
                     ElevatedButton.icon(
-                      onPressed: _pickFiles,
+                      onPressed: _pickFiles, // Uncomment and implement _pickFiles with file_picker
                       icon: Icon(Icons.attach_file, color: Colors.white),
                       label: Text("Pick Files", style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
@@ -325,9 +332,14 @@ class _Studentcreateposts extends State<Studentcreateposts> {
                         },
                       ),
                     )).toList(),
+                  )
+                else
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text("No attachments selected", style: TextStyle(color: Colors.grey)),
                   ),
-                SizedBox(height: 10),
                 Divider(height: 32),
+               
                 Text("Post Type", style: TextStyle(fontWeight: FontWeight.w600)),
                 SizedBox(height: 8),
                 Row(

@@ -20,7 +20,6 @@ import 'package:bzu_leads/pages/private_posts.dart';
 import 'package:bzu_leads/pages/profile_page.dart';
 import 'package:bzu_leads/pages/registration.dart';
 import 'package:bzu_leads/pages/settingsPage.dart';
-import 'package:bzu_leads/pages/studentCreatePosts.dart';
 import 'package:bzu_leads/services/ApiConfig.dart';
 import 'package:bzu_leads/services/editPosts.dart';
 import 'package:bzu_leads/services/group_service.dart';
@@ -950,7 +949,7 @@ List<Future<void> Function()> get _navigationActions {
         Navigator.push(context, MaterialPageRoute(builder: (_) => const PrivatePosts()));
       },
       () async {
-        Navigator.push(context, MaterialPageRoute(builder: (_) => Studentcreateposts()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => PostFormScreen()));
       },
       () async {
         if (_currentUserID != null) {
@@ -1100,7 +1099,7 @@ List<Future<void> Function()> get _navigationActions {
             title: const Text('Create new Posts'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Studentcreateposts()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PostFormScreen()));
             },
           ),
           ListTile(
